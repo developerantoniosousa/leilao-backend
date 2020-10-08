@@ -15,7 +15,13 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "dependencies": {
@@ -29,6 +35,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@sucrase/jest-plugin": "^2.0.0",
     "@types/jest": "^26.0.14",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.12.0",
