@@ -1,4 +1,4 @@
-const tableName = 'auction';
+const tableName = 'auctions';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable(tableName, {
