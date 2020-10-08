@@ -30,7 +30,7 @@ class Auction extends Model {
   static associate(models) {
     this.belongsTo(models.User, {
       foreignKey: 'responsabler_id',
-      as: 'resonsabler',
+      as: 'responsabler',
     });
   }
 }
