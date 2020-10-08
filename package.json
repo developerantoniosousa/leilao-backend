@@ -1,0 +1,7 @@
+{
+  "name": "leilao",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Antonio Sousa <developerantoniosousa@gmail.com>",
+  "license": "MIT"
+}
