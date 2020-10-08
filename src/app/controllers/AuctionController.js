@@ -22,6 +22,21 @@ class AuctionController {
     return response.json(auctions);
   }
 
+  async show(request, response) {
+    const auction = await Auction.findByPk(request.params.id, {
+      attributes: [
+        'id',
+        'name',
+        'value',
+        'is_used',
+        'completed_at',
+        'openning_date',
+        'is_completed',
+      ],
+    });
+    return response.json(auction);
+  }
+
   async store(request, response) {
     const schema = yup.object().shape({
       name: yup.string().required(),
