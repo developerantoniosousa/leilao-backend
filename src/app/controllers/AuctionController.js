@@ -4,6 +4,8 @@ import Auction from '../models/Auction';
 
 class AuctionController {
   async index(request, response) {
+    const { page = 1 } = request.query;
+    const limit = 20;
     const auctions = await Auction.findAll({
       attributes: [
         'id',
@@ -14,6 +16,8 @@ class AuctionController {
         'openning_date',
         'is_completed',
       ],
+      offset: (page - 1) * limit,
+      limit,
     });
     return response.json(auctions);
   }
