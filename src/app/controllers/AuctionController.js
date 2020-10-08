@@ -19,6 +19,9 @@ class AuctionController {
       ],
       offset: (page - 1) * limit,
       limit,
+      include: [
+        { model: User, as: 'responsabler', attributes: ['id', 'email'] },
+      ],
     });
     return response.json(auctions);
   }
