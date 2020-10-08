@@ -9,9 +9,15 @@ class Auction extends Model {
         is_used: Sequelize.BOOLEAN,
         completed_at: Sequelize.DATE,
         openning_date: {
-          type: Sequelize.DATE,
+          type: Sequelize.VIRTUAL,
           get() {
             return this.createdAt;
+          },
+        },
+        is_completed: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return Boolean(this.completed_at);
           },
         },
       },

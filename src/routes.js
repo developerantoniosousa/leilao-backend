@@ -14,6 +14,7 @@ routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
+routes.get('/auctions', AuctionController.index);
 routes.post('/auctions', AuctionController.store);
 
 export default routes;
