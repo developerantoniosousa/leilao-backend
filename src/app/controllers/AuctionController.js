@@ -93,6 +93,16 @@ class AuctionController {
       is_completed,
     });
   }
+
+  async delete(request, response) {
+    await Auction.destroy({
+      where: {
+        responsabler_id: request.userLoggedId,
+        id: request.params.id,
+      },
+    });
+    return response.json();
+  }
 }
 
 export default new AuctionController();

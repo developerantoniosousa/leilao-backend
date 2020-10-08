@@ -18,5 +18,6 @@ routes.get('/auctions', AuctionController.index);
 routes.post('/auctions', AuctionController.store);
 routes.get('/auctions/:id', AuctionController.show);
 routes.put('/auctions/:id', AuctionController.update);
+routes.delete('/auctions/:id', AuctionController.delete);
 
 export default routes;
