@@ -7,6 +7,7 @@ module.exports = {
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   storage: './__tests__/database.sqlite',
+  logging: process.env.NODE_ENV === 'development',
   define: {
     timestamps: true,
     underscored: true,
