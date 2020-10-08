@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "server": "nodemon --inspect src/server.js",
+    "pretest": "set NODE_ENV=test",
     "test": "jest"
   },
   "commitlint": {
@@ -46,6 +47,7 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2",
     "sequelize-cli": "^6.2.0",
+    "sqlite3": "^5.0.0",
     "sucrase": "^3.15.0"
   }
 }
