@@ -17,5 +17,6 @@ routes.use(authMiddleware);
 routes.get('/auctions', AuctionController.index);
 routes.post('/auctions', AuctionController.store);
 routes.get('/auctions/:id', AuctionController.show);
+routes.put('/auctions/:id', AuctionController.update);
 
 export default routes;

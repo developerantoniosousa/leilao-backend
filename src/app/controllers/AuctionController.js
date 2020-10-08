@@ -53,6 +53,46 @@ class AuctionController {
     });
     return response.json({ id, name, value, is_used, openning_date });
   }
+
+  async update(request, response) {
+    const schema = yup.object().shape({
+      name: yup.string(),
+      value: yup.number(),
+      is_used: yup.boolean(),
+    });
+    if (!(await schema.isValid(request.body))) {
+      return response.status(400).json({ error: 'Validation fails' });
+    }
+
+    const auction = await Auction.findOne({
+      where: {
+        responsabler_id: request.userLoggedId,
+        id: request.params.id,
+      },
+    });
+    if (!auction) {
+      return response.status(400).json({ error: 'Auction not found' });
+    }
+
+    const {
+      id,
+      name,
+      value,
+      is_used,
+      openning_date,
+      completed_at,
+      is_completed,
+    } = await auction.update(request.body);
+    return response.json({
+      id,
+      name,
+      value,
+      is_used,
+      openning_date,
+      completed_at,
+      is_completed,
+    });
+  }
 }
 
 export default new AuctionController();
