@@ -1,21 +1,22 @@
 import request from 'supertest';
 
 import app from '../../src/app';
+import truncate from '../utils/truncate';
+import factories from '../factories';
 
 describe('User', () => {
+  beforeEach(async () => {
+    await truncate();
+  });
+
   it('should create a new user', async () => {
-    const response = await request(app).post('/api/users').send({
-      email: 'developerantoniosousa@gmail.com',
-      password: '123123',
-    });
+    const user = await factories.attrs('User');
+    const response = await request(app).post('/api/users').send(user);
     expect(response.body).toHaveProperty('id');
   });
 
   it('should not create user with the same email', async () => {
-    const user = {
-      email: 'developerantoniosousa@gmail.com',
-      password: '123123',
-    };
+    const user = factories.attrs('User');
     await request(app).post('/api/users').send(user);
     const response = await request(app).post('/api/users').send(user);
     expect(response.status).toBe(400);
