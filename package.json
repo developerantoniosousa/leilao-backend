@@ -6,8 +6,9 @@
   "license": "MIT",
   "scripts": {
     "server": "nodemon --inspect src/server.js",
-    "pretest": "set NODE_ENV=test",
-    "test": "jest"
+    "pretest": "set NODE_ENV=test&& sequelize db:migrate",
+    "test": "set NODE_ENV=test&& jest",
+    "posttest": "set NODE_ENV=test&& sequelize db:migrate:undo:all"
   },
   "commitlint": {
     "extends": [
