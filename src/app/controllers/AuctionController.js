@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 
 import Auction from '../models/Auction';
+import User from '../models/User';
 
 class AuctionController {
   async index(request, response) {
@@ -32,6 +33,9 @@ class AuctionController {
         'completed_at',
         'openning_date',
         'is_completed',
+      ],
+      include: [
+        { model: User, as: 'responsabler', attributes: ['id', 'email'] },
       ],
     });
     return response.json(auction);
