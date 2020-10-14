@@ -8,6 +8,9 @@ class AuctionController {
     const { page = 1 } = request.query;
     const limit = 20;
     const auctions = await Auction.findAll({
+      where: {
+        responsabler_id: request.userLoggedId,
+      },
       attributes: [
         'id',
         'name',
