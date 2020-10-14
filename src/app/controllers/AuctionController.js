@@ -102,13 +102,17 @@ class AuctionController {
   }
 
   async delete(request, response) {
-    await Auction.destroy({
+    const quantityDeleted = await Auction.destroy({
       where: {
         responsabler_id: request.userLoggedId,
         id: request.params.id,
       },
     });
-    return response.json();
+
+    if (quantityDeleted) {
+      return response.json();
+    }
+    return response.status(400).json({ error: 'can not delete the auction' })
   }
 }
 
